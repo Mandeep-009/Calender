@@ -1,5 +1,3 @@
-
-
 #include <iostream>
 
 using namespace std;
@@ -8,12 +6,48 @@ int main()
 {
     int ly=0;
     int m,d,y;int mc,dc,cc;
+    
     cout<<"Enter date: ";
     cin>>d;
+    
+    if(d>31||d<1)
+    {
+        cout<<"Invalid input\nRestart the program";
+        return 0;
+    }
+    
     cout<<"Enter month number: ";
     cin>>m;
+    
+    if(m>12||m<1)
+    {
+        cout<<"Invalid input\nRestart the program";
+        return 0;
+    }
+    
+    if(m==2)
+    {
+        if(d>29)
+        {
+            cout<<"Invalid input\nRestart the program";
+            return 0;
+        }
+    }
+    else if((m==4||m==6||m==9||m==11))
+    {   if(d>30){
+        cout<<"Invalid input\nRestart the program";
+        return 0;}
+    }
+    
+    
     cout<<"Enter year: ";
     cin>>y;
+    
+    if(y<0)
+    {
+        cout<<"Invalid input\nRestart the program";
+        return 0;
+    }
     
     // checking if the year is leap or not
     int ot=y%100;
@@ -24,6 +58,13 @@ int main()
     else if(ot%4==0)
     {
         ly=1;
+    }
+    
+    // checking validity of date with leap year
+    if(ly==0&&m==2&&d==29)
+    {
+        cout<<"Invalid input\nRestart the program";
+        return 0;
     }
     
     // finding century code cc
